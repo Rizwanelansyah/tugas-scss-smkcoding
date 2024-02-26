@@ -25,6 +25,20 @@ $baseSize: 4px;
   border-radius: ($baseSize * 10);
 }
 
+@mixin underlined {
+  text-decoration: underline;
+  text-decoration-color: orange;
+}
+
+@mixin second-button($color: white) {
+  padding: ($baseSize * 3) ($baseSize * 6);
+  border-radius: ($baseSize * 10);
+  background: $secondColor;
+  border: none;
+  color: $color;
+  font-size: 18px;
+}
+
 @keyframes pulse {
   0%, 30%, 70%, 100% {
     transform: scale(1.5);
@@ -157,13 +171,9 @@ nav {
 
       .order-button {
         @include flex-box();
+        @include second-button();
         font-size: 18px;
         gap: 8px;
-        padding: ($baseSize * 3) ($baseSize * 6);
-        border-radius: ($baseSize * 10);
-        background: $secondColor;
-        border: none;
-        color: white;
 
         .icon {
           @include flex-box();
@@ -255,8 +265,7 @@ nav {
     font-size: $baseSize * 10;
 
     span {
-      text-decoration: underline;
-      text-decoration-color: orange;
+      @include underlined();
     }
   }
   .container {
@@ -378,8 +387,8 @@ nav {
   background: white;
   width: 100%;
   position: absolute;
-  height: 750px;
-  margin-top: -200px;
+  height: 900px;
+  margin-top: -150px;
   z-index: -4;
 }
 
@@ -389,8 +398,7 @@ nav {
   .title {
     font-size: $baseSize * 10;
     span {
-      text-decoration: underline;
-      text-decoration-color: orange;
+      @include underlined();
     }
   }
   .container {
@@ -416,6 +424,61 @@ nav {
             font-weight: bold;
           }
         }
+      }
+    }
+  }
+}
+
+.about-us {
+  margin-top: 200px;
+  position: relative;
+  box-sizing: border-box;
+
+  .bg-aboutus {
+    padding: 20px 0;
+    position: absolute;
+    width: 100%;
+    opacity: .1;
+  }
+
+  .container {
+    padding: 0 80px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    align-items: center;
+    width: 100%;
+
+    .left {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      img {
+        margin-top: -150px;
+        width: 60%;
+        border: $baseSize solid rgba($color: white, $alpha: 0.5);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba($color: black, $alpha: 0.6);
+      }
+    }
+    .right {
+      h1 {
+        font-size: ($baseSize * 10);
+        margin-bottom: .5em;
+
+        span {
+          @include underlined();
+        }
+      }
+      p {
+        margin: 2em 0;
+        color: rgba($color: black, $alpha: 0.6);
+      }
+      button {
+        @include second-button($color: $myColor);
+        font-size: 14px;
+        font-weight: bold;
       }
     }
   }
